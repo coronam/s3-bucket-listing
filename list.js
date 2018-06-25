@@ -232,28 +232,35 @@ function prepareTable(info) {
     if (item.Type === 'directory') {
       console.log("item.key in jquery: " + item.Key);
       console.log("item.keyText in jquery: " + item.keyText);
-    }
-  });
-  jQuery.each(files, function(idx, item) {
-    // strip off the prefix
-    item.keyText = item.Key.substring(prefix.length);
-    if (item.Type === 'directory') {
-      if (S3BL_IGNORE_PATH) {
-        item.href = location.protocol + '//' + location.hostname +
-                    location.pathname + '?prefix=' + item.Key;
-      } else {
-        item.href = item.keyText;
+      if(item.keyText === 'failsafe-reports/'){
+        console.log("failsafe report found");
+        buildNumber = true
       }
-    } else {
-      item.href = BUCKET_WEBSITE_URL + '/' + encodeURIComponent(item.Key);
-      item.href = item.href.replace(/%2F/g, '/');
     }
-    var row = renderRow(item, cols);
-    if (!EXCLUDE_FILE.includes(item.Key))
-      content.push(row + '\n');
   });
-
+  if(buildNumber){
+    console.log("failsafe report will be displayed now");
+  }else{
+    jQuery.each(files, function(idx, item) {
+      // strip off the prefix
+      item.keyText = item.Key.substring(prefix.length);
+      if (item.Type === 'directory') {
+        if (S3BL_IGNORE_PATH) {
+          item.href = location.protocol + '//' + location.hostname +
+                      location.pathname + '?prefix=' + item.Key;
+        } else {
+          item.href = item.keyText;
+        }
+      } else {
+        item.href = BUCKET_WEBSITE_URL + '/' + encodeURIComponent(item.Key);
+        item.href = item.href.replace(/%2F/g, '/');
+      }
+      var row = renderRow(item, cols);
+      if (!EXCLUDE_FILE.includes(item.Key))
+        content.push(row + '\n');
+    });
   return content.join('');
+  }
 }
 
 function renderRow(item, cols) {
