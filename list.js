@@ -72,7 +72,7 @@ function getS3Data(marker, html) {
         $('#listing').html('');
         var xml = $(data);
         var info = getInfoFromS3Data(xml);
-        console.error("files: " + info.files)
+        console.log("files: " + info.files)
         // Slight modification by FuzzBall03
         // This will sort your file listing based on var S3B_SORT
         // See url for example:
