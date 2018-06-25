@@ -231,7 +231,7 @@ function prepareTable(info) {
     // strip off the prefix
     item.keyText = item.Key.substring(prefix.length);
     if (item.Type === 'directory') {
-      console.log("item.key in jquery: " item.Key);
+      console.log("item.key in jquery: " + item.Key);
       if (S3BL_IGNORE_PATH) {
         item.href = location.protocol + '//' + location.hostname +
                     location.pathname + '?prefix=' + item.Key;
