@@ -72,9 +72,8 @@ function getS3Data(marker, html) {
         $('#listing').html('');
         var xml = $(data);
         var info = getInfoFromS3Data(xml);
-        console.log("directories.key: " + typeof info.directories)
-        console.log("trying other: " + typeof info.directories.concat(info.files))
-        console.log("directories.key: " + info.directories.getClass())
+        console.log("directories.key: " + info.directories)
+        console.log("trying other: " +  info.directories.concat(info.files))
         // Slight modification by FuzzBall03
         // This will sort your file listing based on var S3B_SORT
         // See url for example:
@@ -254,6 +253,8 @@ function renderRow(item, cols) {
   var row = '';
   row += padRight(item.LastModified, cols[1]) + '  ';
   row += padRight(item.Size, cols[2]);
+  console.log("keytext" + item.keyText)
+  console.log("href: " + item.href)
   row += '<a href="' + item.href + '">' + item.keyText + '</a>';
   return row;
 }
