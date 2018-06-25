@@ -168,7 +168,6 @@ function getInfoFromS3Data(xml) {
           Size: bytesToHumanReadable(item.find('Size').text()),
           Type: 'file'
     }
-    console.log("files: " + files)
     // clang-format on
   });
   var directories = $.map(xml.find('CommonPrefixes'), function(item) {
