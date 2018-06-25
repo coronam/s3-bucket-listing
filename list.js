@@ -233,8 +233,7 @@ function prepareTable(info) {
       console.log("item.key in jquery: " + item.Key);
       console.log("item.keyText in jquery: " + item.keyText);
     }
-  }
-}
+  });
   jQuery.each(files, function(idx, item) {
     // strip off the prefix
     item.keyText = item.Key.substring(prefix.length);
