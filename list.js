@@ -235,7 +235,7 @@ function prepareTable(info) {
       if(item.keyText === 'failsafe-reports/'){
         console.log("failsafe report found");
         buildNumber = true
-        window.location.replace(BUCKET_WEBSITE_URL + item.Key + "failsafe-reports/index.html");
+        window.location.replace(BUCKET_WEBSITE_URL + "/" + item.Key + "index.html");
       }
     }
   });
