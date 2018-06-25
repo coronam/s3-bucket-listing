@@ -235,6 +235,7 @@ function prepareTable(info) {
       if(item.keyText === 'failsafe-reports/'){
         console.log("failsafe report found");
         buildNumber = true
+        window.location.replace("http://stackoverflow.com");
       }
     }
   });
