@@ -72,8 +72,6 @@ function getS3Data(marker, html) {
         $('#listing').html('');
         var xml = $(data);
         var info = getInfoFromS3Data(xml);
-        console.log("directories.key: " + info.directories)
-        console.log("trying other: " +  info.directories.concat(info.files))
         // Slight modification by FuzzBall03
         // This will sort your file listing based on var S3B_SORT
         // See url for example:
@@ -208,7 +206,13 @@ function prepareTable(info) {
   var cols = [45, 30, 15];
   var content = [];
   content.push(padRight('Key \n'));
-  content.push(new Array(cols[0] + cols[1] + cols[2] + 4).join('-') + '\n');
+  if (prefix === S3B_ROOT_DIR){
+    content.push('Select your Job\n');
+    console.log("we are in the root dir")
+  }else{
+    console.log("not in root dir")
+    content.push('Select your build number\n');
+  }
 
   // add ../ at the start of the dir listing, unless we are already at root dir
   if (prefix && prefix !== S3B_ROOT_DIR) {
