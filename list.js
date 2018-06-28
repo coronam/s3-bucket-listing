@@ -207,8 +207,7 @@ function prepareTable(info) {
   var files = info.directories.concat(info.files), prefix = info.prefix;
   var cols = [45, 30, 15];
   var content = [];
-  content.push(padRight('Last Modified', cols[1]) + '  ' +
-               padRight('Size', cols[2]) + 'Key \n');
+  content.push(padRight('Key \n');
   content.push(new Array(cols[0] + cols[1] + cols[2] + 4).join('-') + '\n');
 
   // add ../ at the start of the dir listing, unless we are already at root dir
@@ -230,10 +229,7 @@ function prepareTable(info) {
   jQuery.each(files, function(idx, item) {
     item.keyText = item.Key.substring(prefix.length);
     if (item.Type === 'directory') {
-      console.log("item.key in jquery: " + item.Key);
-      console.log("item.keyText in jquery: " + item.keyText);
       if(item.keyText === 'failsafe-reports/'){
-        console.log("failsafe report found");
         buildNumber = true
         window.location.replace(BUCKET_WEBSITE_URL + "/" + item.Key + "index.html");
       }
@@ -266,10 +262,6 @@ function prepareTable(info) {
 
 function renderRow(item, cols) {
   var row = '';
-  row += padRight(item.LastModified, cols[1]) + '  ';
-  row += padRight(item.Size, cols[2]);
-  console.log("keytext" + item.keyText)
-  console.log("href: " + item.href)
   row += '<a href="' + item.href + '">' + item.keyText + '</a>';
   return row;
 }
