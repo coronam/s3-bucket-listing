@@ -207,11 +207,11 @@ function prepareTable(info) {
   var content = [];
   content.push(padRight('Key \n'));
   if (prefix === S3B_ROOT_DIR){
-    content.push('Select your Job\n');
+    content.push('<h2>Select your Job\n</h2>');
     console.log("we are in the root dir")
   }else{
     console.log("not in root dir")
-    content.push('Select your build number\n');
+    content.push('<h2>Select your build number\n</h2>');
   }
 
   // add ../ at the start of the dir listing, unless we are already at root dir
