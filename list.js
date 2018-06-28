@@ -273,7 +273,7 @@ function renderRow(item, cols) {
 function padRight(padString, length) {
   var str = padString.slice(0, length - 3);
   if (padString.length > str.length) {
-    str += '...';
+    str += '';
   }
   while (str.length < length) {
     str = str + ' ';
